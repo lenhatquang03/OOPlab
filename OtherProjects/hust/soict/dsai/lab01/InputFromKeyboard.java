@@ -1,4 +1,4 @@
-package OtherProjects.lab1;
+package lab01;
 
 import java.util.Scanner;
 public class InputFromKeyboard {
