@@ -1,4 +1,4 @@
-package OtherProjects.lab1;
+package lab01;
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 public class SortingArray {
