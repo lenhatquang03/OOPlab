@@ -1,4 +1,4 @@
-package OtherProjects.lab1;
+package lab01;
 import java.util.Random;
 public class ConcatenationInLoops {
     public static void main(String[] args) {
