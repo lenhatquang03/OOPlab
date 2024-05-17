@@ -1,7 +1,7 @@
-package hust.soict.dsai.aims.test.disc;
+package AimsProject.src.hust.soict.dsai.aims.test.disc;
 import java.lang.reflect.*;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class TestPassingParameter {
 	public static void main(String[] args) {

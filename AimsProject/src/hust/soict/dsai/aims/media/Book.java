@@ -3,7 +3,7 @@ package AimsProject.src.hust.soict.dsai.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book extends Media {
     // Attributes
     private List<String> authors = new ArrayList<String>();
 

@@ -1,7 +1,7 @@
-package hust.soict.dsai.aims.test.store;
+package AimsProject.src.hust.soict.dsai.aims.test.store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
-import hust.soict.dsai.aims.store.Store;
+import AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
+import AimsProject.src.hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
     public static void main(String[] args) {
