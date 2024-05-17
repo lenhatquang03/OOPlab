@@ -22,4 +22,9 @@ public class Disc extends Media{
         this.director = director;
         this.length = length;
     }
+
+    public Disc(String title, String director) {
+        super(title);
+        this.director = director;
+    }
 }
