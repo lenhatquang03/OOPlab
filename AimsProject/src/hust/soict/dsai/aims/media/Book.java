@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
+    // Attributes
     private int id;
     private String title;
     private String category;
     private float cost;
+    private List<String> authors = new ArrayList<String>();
 
+    // Accessor methods
     public int getId() {
         return id;
     }
@@ -33,16 +36,6 @@ public class Book {
         this.cost = cost;
     }
 
-    public List<String> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
-
-    private List<String> authors = new ArrayList<String>();
-
     public String getTitle() {
         return title;
     }
@@ -51,7 +44,25 @@ public class Book {
         this.title = title;
     }
 
-    public static void addAuthor(String authorName) {
+    // Constructor
+    public Book() {}
 
+    // Methods
+    public void addAuthor(String authorName) {
+        if (this.authors.contains(authorName)) {
+            System.out.println("The author already exists!");
+        }
+        else {
+            this.authors.add(authorName);
+        }
+    }
+
+    public void removeAuthor(String authorName) {
+        if (this.authors.contains(authorName)) {
+            this.authors.remove(authorName);
+        }
+        else {
+            System.out.println("The author does not exist!");
+        }
     }
 }
