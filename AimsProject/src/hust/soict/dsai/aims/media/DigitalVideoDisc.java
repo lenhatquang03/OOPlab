@@ -1,11 +1,10 @@
-package hust.soict.dsai.aims.disc;
+package AimsProject.src.hust.soict.dsai.aims.media;
 import java.lang.reflect.*;
 import java.util.Objects;
-public class DigitalVideoDisc {
+public class DigitalVideoDisc extends Media{
     private String director;
     private int length;
     private static int nbDigitalVideoDiscs = 0;
-
 
     // Getters and Setters
 
@@ -37,48 +36,49 @@ public class DigitalVideoDisc {
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         this.director = director;
-        this.title = title;
-        this.category = category;
+        this.setTitle(title);
+        this.setCategory(category);
         this.length = length;
-        this.cost = cost;
+        this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
 
     }
 
     public DigitalVideoDisc(String title, String director, String category, float cost) {
         this.director = director;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc(String title, String category, float cost) {
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc(String title) {
-        this.title = title;
+        this.setTitle(title);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc() {
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+//        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     @Override
     public String toString() {
         Class<?> cls = this.getClass();
         Field[] fields = cls.getDeclaredFields();
-        String name = String.format("%d.", this.id) + "DVD - ";
+        String name = String.format("%d.", this.getId()) + "DVD - ";
         for (int i = 0; i < fields.length - 2; i++) {
             String lowerField = fields[i].toString().split(String.format("%s.", cls.toString().split(" ")[1]))[1];
             String fieldName = String.valueOf(lowerField.charAt(0)).toUpperCase() + lowerField.substring(1);
@@ -86,16 +86,16 @@ public class DigitalVideoDisc {
                 Method getter = cls.getDeclaredMethod("get" + fieldName);
                 Object attribute = getter.invoke(this);
 
-                if ((i < fields.length - 4) & (Objects.isNull(attribute) == false)) {
+                if ((i < fields.length - 4) & (!Objects.isNull(attribute))) {
                     name += (String.format("%s - ", attribute.toString()));
                 }
-                else if ((i < fields.length - 4) & (Objects.isNull(attribute) == true)) {
+                else if ((i < fields.length - 4) & (Objects.isNull(attribute))) {
                     name += "null - ";
                 }
-                else if ((i == fields.length - 4) & (Objects.isNull(attribute) == false)) {
+                else if ((i == fields.length - 4) & (!Objects.isNull(attribute))) {
                     name += (String.format("%s: ", attribute.toString()));
                 }
-                else if ((i == fields.length - 4) & (Objects.isNull(attribute) == true)) {
+                else if ((i == fields.length - 4) & (Objects.isNull(attribute))) {
                     name += "null: ";
                 }
                 else {

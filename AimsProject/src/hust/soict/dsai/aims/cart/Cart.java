@@ -1,8 +1,8 @@
-package hust.soict.dsai.aims.cart;
+package AimsProject.src.hust.soict.dsai.aims.cart;
 
 import java.util.Arrays;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20; 
@@ -66,7 +66,6 @@ public class Cart {
             updateQtyOrdered();
         }
     }
-
 
 // Removing DVDs from the cart
         public void removeDigitalVideoDisc(DigitalVideoDisc disc) {

@@ -1,7 +1,7 @@
-package hust.soict.dsai.aims.test.cart;
+package AimsProject.src.hust.soict.dsai.aims.test.cart;
 
-import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import AimsProject.src.hust.soict.dsai.aims.cart.Cart;
+import AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class CartTest {
 
@@ -19,11 +19,5 @@ public class CartTest {
   
         System.out.println("Search results for \"lion\": ");
         cart.searchDVD("lion");
-        
-
     }
-    
-
-
-    
 }
