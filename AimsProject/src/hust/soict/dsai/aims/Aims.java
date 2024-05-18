@@ -18,20 +18,20 @@ public class Aims {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f);
         an0der.addDigitalVideoDisc(dvd3);
          
-        // an0der.addDigitalVideoDisc(new DigitalVideoDisc("A"), new DigitalVideoDisc("B"));
+         an0der.addDigitalVideoDisc(new DigitalVideoDisc("A"), new DigitalVideoDisc("B"));
 
-        // for (int i = 0; i < an0der.getItemsOrdered().length; i++) {
-        //     System.out.println(an0der.getItemsOrdered()[i]);
-        // }
-
-        // an0der.removeDigitalVideoDisc(dvd3);
-
-        // for (int i = 0; i < an0der.getItemsOrdered().length; i++) {
-        //     System.out.println(an0der.getItemsOrdered()[i]);
-        // }
-
-        // System.out.println("There're " + an0der.getQtyOrdered() + " DVDs in your cart.");
-
-        // System.out.println("The total cost is: " + String.format("%2.2f", an0der.totalCost()));
+//         for (int i = 0; i < an0der.getItemsOrdered().length; i++) {
+//             System.out.println(an0der.getItemsOrdered()[i]);
+//         }
+//
+//         an0der.removeDigitalVideoDisc(dvd3);
+//
+//         for (int i = 0; i < an0der.getItemsOrdered().length; i++) {
+//             System.out.println(an0der.getItemsOrdered()[i]);
+//         }
+//
+//         System.out.println("There're " + an0der.getQtyOrdered() + " DVDs in your cart.");
+//
+//         System.out.println("The total cost is: " + String.format("%2.2f", an0der.totalCost()));
     }
 }
