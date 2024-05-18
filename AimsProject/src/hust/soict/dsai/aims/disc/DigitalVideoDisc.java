@@ -1,65 +1,43 @@
 package hust.soict.dsai.aims.disc;
+import hust.soict.dsai.aims.media.Media;
+
 import java.lang.reflect.*;
 import java.util.Objects;
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
+public class DigitalVideoDisc extends Media {
     private String director;
     private int length;
-    private float cost;
-    private int id;
     private static int nbDigitalVideoDiscs = 0;
-
 
     // Getters and Setters
 
     public static int getNb() {
         return nbDigitalVideoDiscs;
     }
-    
-    public int getId() {
-        return id;
-    }
-    
 
     public String getDirector() {
         return director;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public int getLength() {
         return length;
     }
 
-    public float getCost() {
-        return cost;
-    }
-    
-    public void setId(Object id) {
-    	this.id = (int) id;
-    }
+    public void setId(Object id) { this.setId((int) id); }
     
     public void setNb(Object nb) {
     	DigitalVideoDisc.nbDigitalVideoDiscs = (int) nb;
     }
 
     public void setTitle(Object title) {
-        this.title = (String) title;
+        this.setTitle((String) title);
     } 
 
     public void setDirector(Object director) {
-        this.director = (String) director;
+        this.setDirector((String) director);
     }
 
     public void setCategory(Object category) {
-        this.category = (String) category;
+        this.setCategory((String) category);
     }
 
     public void setLength(Object length) {
@@ -67,55 +45,54 @@ public class DigitalVideoDisc {
     }
 
     public void setCost(Object cost) {
-        this.cost = (float) cost;
+        this.setCost((float) cost);
     }
 
     // Constructors
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         this.director = director;
-        this.title = title;
-        this.category = category;
+        this.setTitle(title);
+        this.setCategory(category);
         this.length = length;
-        this.cost = cost;
+        this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
-
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc(String title, String director, String category, float cost) {
         this.director = director;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc(String title, String category, float cost) {
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc(String title) {
-        this.title = title;
+        this.setTitle(title);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc() {
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
-        this.id = DigitalVideoDisc.nbDigitalVideoDiscs;
+        this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     @Override
     public String toString() {
         Class<?> cls = this.getClass();
         Field[] fields = cls.getDeclaredFields();
-        String name = String.format("%d.", this.id) + "DVD - ";
+        String name = String.format("%d.", this.getId()) + "DVD - ";
         for (int i = 0; i < fields.length - 2; i++) {
             String lowerField = fields[i].toString().split(String.format("%s.", cls.toString().split(" ")[1]))[1];
             String fieldName = String.valueOf(lowerField.charAt(0)).toUpperCase() + lowerField.substring(1);
