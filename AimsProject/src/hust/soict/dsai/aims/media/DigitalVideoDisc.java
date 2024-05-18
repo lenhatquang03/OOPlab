@@ -1,7 +1,9 @@
 package hust.soict.dsai.aims.media;
 
 import java.lang.reflect.*;
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Arrays;
 public class DigitalVideoDisc extends Disc implements Playable {
     private static int nbDigitalVideoDiscs = 0;
 
@@ -72,48 +74,70 @@ public class DigitalVideoDisc extends Disc implements Playable {
         this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
-    @Override
-    public String toString() {
-        Class<?> cls = this.getClass();
-        Field[] fields = cls.getDeclaredFields();
-        String name = String.format("%d.", this.getId()) + "DVD - ";
-        for (int i = 0; i < fields.length - 2; i++) {
-            String lowerField = fields[i].toString().split(String.format("%s.", cls.toString().split(" ")[1]))[1];
-            String fieldName = String.valueOf(lowerField.charAt(0)).toUpperCase() + lowerField.substring(1);
-                try {
-                Method getter = cls.getDeclaredMethod("get" + fieldName);
-                Object attribute = getter.invoke(this);
-
-                if ((i < fields.length - 4) & (Objects.isNull(attribute) == false)) {
-                    name += (String.format("%s - ", attribute.toString()));
-                }
-                else if ((i < fields.length - 4) & (Objects.isNull(attribute) == true)) {
-                    name += "null - ";
-                }
-                else if ((i == fields.length - 4) & (Objects.isNull(attribute) == false)) {
-                    name += (String.format("%s: ", attribute.toString()));
-                }
-                else if ((i == fields.length - 4) & (Objects.isNull(attribute) == true)) {
-                    name += "null: ";
-                }
-                else {
-                    name += (String.format("%s$", attribute.toString()));
-                }
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        }
-        return name;
-    }
-
     // Methods
     public void play() {
         System.out.println("Playing DVD: " + this.getTitle());
         System.out.println("DVD length: " + this.getLength());
-
     }
-}
+
+    @Override
+    public String toString() {
+        String name = String.format("%d.", this.getId()) + "DVD - ";
+        Class<?> cls = this.getClass();
+        while (cls.getSuperclass() != null) {
+            // Accessing the inherited fields of the class.
+            cls = cls.getSuperclass();
+            Field[] clsFields = cls.getDeclaredFields();
+            for (int i = 0; i < clsFields.length; i++) {
+                // Accessing the simple fieldName like "attribute".
+                String lowerField = clsFields[i].toString().split(String.format("%s.", cls.toString().split(" ")[1]))[1];
+                // Transform "attribute" to "Attribute" so we can invoke the method name "getAttribute".
+                String fieldName = String.valueOf(lowerField.charAt(0)).toUpperCase() + lowerField.substring(1);
+                try {
+                    Method getter = this.getClass().getMethod("get" + fieldName);
+                    Object attribute = getter.invoke(this);
+                    if (!cls.getSuperclass().toString().equals("class java.lang.Object")) {
+                        if (!Objects.isNull(attribute)) {
+                            if (lowerField.equals("cost")) {
+                                name += (fieldName + ":" +(String.format("%s$ - ", attribute.toString())));
+                            }
+                            else {
+                                name += (fieldName + ":" +(String.format("%s - ", attribute.toString())));
+                            }
+                        }
+                        else {
+                            name += (fieldName + ":null - ");
+                        }
+                    }
+                    else {
+                        if (!Objects.isNull(attribute)) {
+                            if (lowerField.equals("cost")) {
+                                if (i == clsFields.length - 1) {
+                                    name += (fieldName + ":" +(String.format("%s$.", attribute.toString())));
+                                }
+                                else {
+                                    name += (fieldName + ":" +(String.format("%s$ - ", attribute.toString())));
+                                }
+                            }
+                            else {
+                                if (i == clsFields.length - 1) {
+                                    name += (fieldName + ":" +(String.format("%s.", attribute.toString())));
+                                }
+                                else {
+                                    name += (fieldName + ":" +(String.format("%s - ", attribute.toString())));
+                                }
+                            }
+                        }
+                    }
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return name;
+    }
+ }
