@@ -1,43 +1,39 @@
 package hust.soict.dsai.aims.store;
 
 import java.util.*;
+import hust.soict.dsai.aims.media.Media;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 public class Store {
-    private DigitalVideoDisc[] itemsInStore;
 
-    public DigitalVideoDisc[] getItemsInStore() {
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+
+    public ArrayList<Media> getItemsInStore() {
         return itemsInStore;
     }
 
-    public void setItemsInStore(DigitalVideoDisc[] itemsInStore) {
+    public void setItemsInStore(ArrayList<Media> itemsInStore) {
         this.itemsInStore = itemsInStore;
     }
 
-    public void addDVD(DigitalVideoDisc[] DVDs) {
-        List<DigitalVideoDisc> lst = new ArrayList<>();
-        Collections.addAll(lst, DVDs);
-        DigitalVideoDisc[] updateItems = new DigitalVideoDisc[lst.size()];
-        for (int i = 0; i < lst.size(); i++) {
-            updateItems[i] = lst.get(i);
-        }
-        this.setItemsInStore(updateItems);
-        System.out.println("All DVDs have been successfully added!!");
-    }
-
-    public void removeDVD(DigitalVideoDisc[] DVDs) {
-        List<DigitalVideoDisc> currentLst = new ArrayList<DigitalVideoDisc>(Arrays.asList(this.getItemsInStore()));
-
-        for (DigitalVideoDisc dvd: DVDs) {
-            if (currentLst.contains(dvd)) {
-                currentLst.remove(dvd);
-                System.out.println(dvd.toString() + " HAS BEEN REMOVED!");
+    public void addMedia(Media[] productList) {
+        for (Media product: productList) {
+            if (this.itemsInStore.contains(product)) {
+                System.out.println(product.getTitle() + " is already in the store!");
+            }
+            else {
+                this.itemsInStore.add(product);
             }
         }
-        DigitalVideoDisc[] updateItems = new DigitalVideoDisc[currentLst.size()];
-        for (int i = 0; i < currentLst.size(); i++) {
-            updateItems[i] = currentLst.get(i);
+    }
+
+    public void removeMedia(Media[] productList) {
+        for (Media product: productList) {
+            if (!this.itemsInStore.contains(product)) {
+                System.out.println(product.getTitle() + " is not in the store!");
+            }
+            else {
+                this.itemsInStore.remove(product);
+            }
         }
-        this.setItemsInStore(updateItems);
     }
 }
