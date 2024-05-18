@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.store;
 
 import java.util.*;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 public class Store {
     private DigitalVideoDisc[] itemsInStore;
 

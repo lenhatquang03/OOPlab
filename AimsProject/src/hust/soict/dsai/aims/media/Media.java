@@ -40,5 +40,11 @@ public abstract class Media {
         this.cost = cost;
     }
 
+    // Constructors
+    public Media(String title, String category) {
+        this.title = title;
+        this.category = category;
+    }
 
+    public Media() {}
 }

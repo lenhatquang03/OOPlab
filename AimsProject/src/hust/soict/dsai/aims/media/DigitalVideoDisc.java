@@ -1,27 +1,11 @@
-package hust.soict.dsai.aims.disc;
-import hust.soict.dsai.aims.media.Media;
+package hust.soict.dsai.aims.media;
 
 import java.lang.reflect.*;
 import java.util.Objects;
-public class DigitalVideoDisc extends Media {
-    private String director;
-    private int length;
+public class DigitalVideoDisc extends Disc {
     private static int nbDigitalVideoDiscs = 0;
 
     // Getters and Setters
-
-    public static int getNb() {
-        return nbDigitalVideoDiscs;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
     public void setId(Object id) { this.setId((int) id); }
     
     public void setNb(Object nb) {
@@ -41,7 +25,7 @@ public class DigitalVideoDisc extends Media {
     }
 
     public void setLength(Object length) {
-        this.length = (int) length;
+        this.setLength((int) length);
     }
 
     public void setCost(Object cost) {
@@ -51,17 +35,17 @@ public class DigitalVideoDisc extends Media {
     // Constructors
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        this.director = director;
+        this.setDirector(director);
         this.setTitle(title);
         this.setCategory(category);
-        this.length = length;
+        this.setLength(length);
         this.setCost(cost);
         DigitalVideoDisc.nbDigitalVideoDiscs += 1;
         this.setId(DigitalVideoDisc.nbDigitalVideoDiscs);
     }
 
     public DigitalVideoDisc(String title, String director, String category, float cost) {
-        this.director = director;
+        this.setDirector(director);
         this.setTitle(title);
         this.setCategory(category);
         this.setCost(cost);
