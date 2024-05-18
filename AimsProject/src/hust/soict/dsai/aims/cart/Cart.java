@@ -15,6 +15,11 @@ public class Cart {
         this.itemsOrdered = itemsOrdered;
     }
 
+    // Acessor methods
+    public ArrayList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
     public Cart() {}
 
     // Adding products
