@@ -1,5 +1,7 @@
 package hust.soict.dsai.aims.media;
 
+import java.util.Objects;
+
 public class Track implements Playable {
     // Attributes
     private String title;
@@ -19,9 +21,23 @@ public class Track implements Playable {
         this.length = length;
     }
 
+    public Track(String title, int length) {
+        this.title = title;
+        this.length = length;
+    }
+
     // Methods
     public void play() {
         System.out.println("Playing track: " + this.getTitle());
         System.out.println("Track length: " + this.getLength());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Track) {
+            Track track = (Track) obj;
+            return Objects.equals(this.title, track.title) && Objects.equals(this.length, track.length);
+        }
+        return false;
     }
 }
