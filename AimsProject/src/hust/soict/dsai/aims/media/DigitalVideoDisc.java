@@ -2,7 +2,7 @@ package hust.soict.dsai.aims.media;
 
 import java.lang.reflect.*;
 import java.util.Objects;
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
     private static int nbDigitalVideoDiscs = 0;
 
     // Getters and Setters
@@ -108,5 +108,12 @@ public class DigitalVideoDisc extends Disc {
             }
         }
         return name;
+    }
+
+    // Methods
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
+
     }
 }

@@ -25,10 +25,9 @@ public class Disc extends Media {
     // Constructor
     public Disc() {}
 
-    public Disc(String title, String category, String director, int length) {
+    public Disc(String title, String category, String director) {
         super(title, category);
         this.director = director;
-        this.length = length;
     }
 
 
