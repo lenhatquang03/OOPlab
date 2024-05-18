@@ -11,19 +11,19 @@ public class StoreTest {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f);
         DigitalVideoDisc dvd4 = new DigitalVideoDisc();
         DigitalVideoDisc[] aDVDs = {dvd1, dvd2, dvd3};
-        myStore.addDVD(aDVDs);
+        myStore.addMedia(aDVDs);
         
         System.out.println("List of DVDs in store after adding some: ");
-        for (int i = 0; i < myStore.getItemsInStore().length; i++) {
-            System.out.println(myStore.getItemsInStore()[i].toString());
+        for (int i = 0; i < myStore.getItemsInStore().size(); i++) {
+            System.out.println(myStore.getItemsInStore().get(i).toString());
         }
 
         System.out.println();
         DigitalVideoDisc[] rDVDs = {dvd2, dvd4};
-        myStore.removeDVD(rDVDs);
+        myStore.removeMedia(rDVDs);
         System.out.println("List of DVDs in store after removing some: ");
-        for (int i = 0; i < myStore.getItemsInStore().length; i++) {
-            System.out.println(myStore.getItemsInStore()[i].toString());
+        for (int i = 0; i < myStore.getItemsInStore().size(); i++) {
+            System.out.println(myStore.getItemsInStore().get(i).toString());
         }      
     } 
 }
